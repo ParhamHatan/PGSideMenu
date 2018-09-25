@@ -30,10 +30,8 @@ Setup you side menu with a content, left and right controller.
 ```
 let sideMenuController = PGSideMenu()
 let contentController = YourContentController()
-let leftMenuController = YourLeftMenuController()
 let rightMenuController = YourRightMenuController()
 sideMenuController.addContentController(contentController)
-sideMenuController.addLeftMenuController(leftMenuController)
 sideMenuController.addRightMenuController(rightMenuController)
 self.window?.rootViewController = sideMenuController
 ```
@@ -48,7 +46,6 @@ sideMenuController.animationType = .slideInRotate
 Toggle the menu
 
 ```
-sideMenuController.toggleLeftMenu()
 sideMenuController.toggleRightMenu()
 ```
 
