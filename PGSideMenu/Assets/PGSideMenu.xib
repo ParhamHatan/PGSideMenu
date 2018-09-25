@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,8 +14,6 @@
                 <outlet property="contentContainerView" destination="TMa-1U-jAa" id="Buo-il-i7v"/>
                 <outlet property="contentViewCenterConstraint" destination="As7-aE-508" id="t3X-2A-D9S"/>
                 <outlet property="innerContentViewCenterConstraint" destination="cIo-iS-JSW" id="Ule-EA-VFz"/>
-                <outlet property="leftMenuContainerView" destination="nKd-fv-Jhf" id="qq2-1u-ZEA"/>
-                <outlet property="leftMenuWidthConstraint" destination="uvA-66-ptf" id="xYY-nw-4Mg"/>
                 <outlet property="rightMenuContainerView" destination="AfC-i2-bbh" id="QZG-Iv-mGo"/>
                 <outlet property="rightMenuWidthConstraint" destination="pzm-EJ-Cc4" id="76o-gc-y4u"/>
                 <outlet property="view" destination="84d-Pu-6GV" id="P3n-Jb-Sa6"/>
@@ -24,8 +25,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMa-1U-jAa" userLabel="contentView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PRX-Kv-db6" userLabel="innerContentView">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
@@ -37,13 +40,8 @@
                         <constraint firstAttribute="bottom" secondItem="PRX-Kv-db6" secondAttribute="bottom" id="iOY-ZT-ZVk"/>
                     </constraints>
                 </view>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nKd-fv-Jhf" userLabel="leftMenu">
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="240" id="uvA-66-ptf"/>
-                    </constraints>
-                </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfC-i2-bbh" userLabel="rightMenu">
+                    <rect key="frame" x="375.5" y="0.0" width="240" height="667"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="pzm-EJ-Cc4"/>
@@ -53,11 +51,8 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="TMa-1U-jAa" secondAttribute="bottom" id="0Kv-2V-rRS"/>
-                <constraint firstItem="nKd-fv-Jhf" firstAttribute="top" secondItem="84d-Pu-6GV" secondAttribute="top" id="0PD-gm-s7u"/>
-                <constraint firstItem="PRX-Kv-db6" firstAttribute="leading" secondItem="nKd-fv-Jhf" secondAttribute="trailing" constant="-0.5" id="3Dy-hI-Zkj"/>
                 <constraint firstItem="TMa-1U-jAa" firstAttribute="centerX" secondItem="84d-Pu-6GV" secondAttribute="centerX" id="As7-aE-508"/>
                 <constraint firstAttribute="bottom" secondItem="AfC-i2-bbh" secondAttribute="bottom" id="HsW-gc-YjD"/>
-                <constraint firstAttribute="bottom" secondItem="nKd-fv-Jhf" secondAttribute="bottom" id="OCg-mo-gdj"/>
                 <constraint firstItem="AfC-i2-bbh" firstAttribute="top" secondItem="84d-Pu-6GV" secondAttribute="top" id="SPZ-E4-4Hy"/>
                 <constraint firstItem="TMa-1U-jAa" firstAttribute="width" secondItem="84d-Pu-6GV" secondAttribute="width" id="UBB-Do-E9D"/>
                 <constraint firstItem="AfC-i2-bbh" firstAttribute="leading" secondItem="PRX-Kv-db6" secondAttribute="trailing" constant="0.5" id="cTY-eJ-S4Q"/>
