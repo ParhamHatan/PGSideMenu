@@ -1,4 +1,4 @@
-    //
+//
 //  DoorMenuViewController.swift
 //  SwiftDemos
 //
@@ -13,21 +13,16 @@ open class PGSideMenu: UIViewController {
     // MARK: Outlets
     
     @IBOutlet weak var contentContainerView: UIView!
-    @IBOutlet weak var leftMenuContainerView: UIView!
     @IBOutlet weak var rightMenuContainerView: UIView!
     
     @IBOutlet weak var contentViewCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var innerContentViewCenterConstraint: NSLayoutConstraint!
-    @IBOutlet weak var leftMenuWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var rightMenuWidthConstraint: NSLayoutConstraint!
     
     // MARK: Public Properties
     
     /** The current content controller */
     public var contentController: UIViewController?
-    
-    /** Left menu controller */
-    public var leftMenuController: UIViewController?
     
     /** Right menu controller */
     public var rightMenuController: UIViewController?
@@ -127,16 +122,6 @@ open class PGSideMenu: UIViewController {
         
     }
     
-    /** Sets the left menu controller. You can retrieve this controller later using the leftMenuController property */
-    open func addLeftMenuController(_ controller: UIViewController) {
-        
-        self.addChildViewController(controller)
-        self.leftMenuContainerView.addSubviewFullscreen(controller.view)
-        self.leftMenuController = controller
-        controller.didMove(toParentViewController: self)
-        
-    }
-    
     /** Sets the right menu controller. You can retrieve this controller later using the rightMenuController property */
     open func addRightMenuController(_ controller: UIViewController) {
         
@@ -144,13 +129,6 @@ open class PGSideMenu: UIViewController {
         self.rightMenuContainerView.addSubviewFullscreen(controller.view)
         self.rightMenuController = controller
         controller.didMove(toParentViewController: self)
-    }
-    
-    /** Open/close left menu depending on menu state. */
-    open func toggleLeftMenu() {
-        
-        self.animationDelegate.toggleLeftMenu(animated: true)
-        
     }
     
     /** Open/close right menu depending on menu state. */

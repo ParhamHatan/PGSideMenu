@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum Side {
-    case left, right
+    case right
 }
 
 protocol PGSideMenuAnimationDelegate: class {
@@ -18,9 +18,6 @@ protocol PGSideMenuAnimationDelegate: class {
     init(sideMenu: PGSideMenu)
     
     unowned var sideMenu: PGSideMenu {get}
-    
-    func toggleLeftMenu(animated: Bool)
-    var isLeftMenuOpen: Bool {get}
     
     func toggleRightMenu(animated: Bool)
     var isRightMenuOpen: Bool {get}

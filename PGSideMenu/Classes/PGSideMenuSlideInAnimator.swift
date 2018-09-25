@@ -13,17 +13,14 @@ class PGSideMenuSlideInAnimator: PGSideMenuAnimationDelegate {
     // MARK: Properties
     
     unowned let sideMenu: PGSideMenu
-    
-    var isLeftMenuOpen: Bool {
-        return self.sideMenu.contentViewCenterConstraint.constant == self.maxAbsoluteContentTranslation
-    }
+
     
     var isRightMenuOpen: Bool {
         return self.sideMenu.contentViewCenterConstraint.constant == -self.maxAbsoluteContentTranslation
     }
     
     var isMenuOpen: Bool {
-        return self.isLeftMenuOpen || self.isRightMenuOpen
+        return self.isRightMenuOpen
     }
     
     var maxAbsoluteContentTranslation: CGFloat {
@@ -45,18 +42,7 @@ class PGSideMenuSlideInAnimator: PGSideMenuAnimationDelegate {
     func configureSideMenu() {
         
         print("max content translation: \(self.maxAbsoluteContentTranslation)")
-        self.sideMenu.leftMenuWidthConstraint.constant = self.maxAbsoluteContentTranslation
         self.sideMenu.rightMenuWidthConstraint.constant = self.maxAbsoluteContentTranslation
-    }
-    
-    func toggleLeftMenu(animated: Bool) {
-        
-        guard !self.isMenuOpen else {
-            self.hideMenu(animated: animated)
-            return
-        }
-        
-        self.openLeftMenu(animated: animated)
     }
     
     func toggleRightMenu(animated: Bool) {
@@ -67,12 +53,6 @@ class PGSideMenuSlideInAnimator: PGSideMenuAnimationDelegate {
         }
         
         self.openRightMenu(animated: animated)
-    }
-    
-    func openLeftMenu(animated: Bool) {
-        
-        self.translateContentView(by: self.maxAbsoluteContentTranslation, animated: animated)
-        
     }
     
     func openRightMenu(animated: Bool) {
@@ -137,7 +117,9 @@ class PGSideMenuSlideInAnimator: PGSideMenuAnimationDelegate {
             
             // Almost opened
             
-            self.sideMenu.contentViewCenterConstraint.constant > 0 ? self.openLeftMenu(animated: true) : self.openRightMenu(animated: true)
+            if self.sideMenu.contentViewCenterConstraint.constant < 0 {
+                self.openRightMenu(animated: true)
+            }
             
             
         } else {

@@ -34,8 +34,7 @@ class PGSideMenuSlideInRotateAnimator {
     // MARK: Methods
     
     func configureSideMenu() {
-        
-        self.sideMenu.leftMenuWidthConstraint.constant = self.maxAbsoluteContentTranslation
+    
         self.sideMenu.rightMenuWidthConstraint.constant = self.maxAbsoluteContentTranslation
         self.addShadowToContentView()
     }
@@ -53,11 +52,6 @@ class PGSideMenuSlideInRotateAnimator {
         // Do not translate if the translation is at the maximum
         guard abs(x) <= self.maxAbsoluteContentTranslation else {return}
         
-        // Do not translate, if there is no menu
-        if x > 0 && self.sideMenu.leftMenuController == nil {
-            self.hideMenu(animated: false)
-            return
-        }
         
         if x < 0 && self.sideMenu.rightMenuController == nil {
             self.hideMenu(animated: false)
@@ -110,36 +104,18 @@ extension PGSideMenuSlideInRotateAnimator: PGSideMenuAnimationDelegate {
     
     func toggleMenu(side: Side) {
         
-        if self.isLeftMenuOpen || self.isRightMenuOpen {
+        if self.isRightMenuOpen {
             
             self.hideMenu()
             
         } else {
             
-            side == .left ? self.openLeftMenu() : self.openRightMenu()
+            self.openRightMenu()
             
         }
     }
     
-    func toggleLeftMenu(animated: Bool = true) {
-        
-        self.toggleMenu(side: .left)
-    }
     
-    func openLeftMenu(animated: Bool = true) {
-        
-        self.translateContentView(inXDimension: self.maxAbsoluteContentTranslation, animated: animated)
-    }
-    
-    func closeLeftMenu(animated: Bool = true) {
-        
-        self.hideMenu(animated: true)
-    }
-    
-    var isLeftMenuOpen: Bool {
-        
-        return sideMenu.contentViewCenterConstraint.constant == self.maxAbsoluteContentTranslation
-    }
     
     func toggleRightMenu(animated: Bool = true) {
         
@@ -217,7 +193,9 @@ extension PGSideMenuSlideInRotateAnimator: PGSideMenuAnimationDelegate {
             
             // Almost opened
             
-            self.sideMenu.contentViewCenterConstraint.constant > 0 ? self.openLeftMenu() : self.openRightMenu()
+            if self.sideMenu.contentViewCenterConstraint.constant < 0 {
+                self.openRightMenu()
+            }
             
             
         } else {
